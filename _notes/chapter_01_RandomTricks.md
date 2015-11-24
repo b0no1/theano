@@ -97,3 +97,44 @@ list.pop(index), list.pop() # remove last element
 ```python
 list[0:2] = 'z'    ## replace ['a', 'b'] with ['z']
 ```
+
+### list.sort() vs sorted(list)
+
+
+## Custom Sorting With key
+
+```python
+def sort_last(tuples):
+    '''
+		sorting based on last element of tuple
+		e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
+		[(2, 2), (1, 3), (3, 4, 5), (1, 7)]
+		>> custom key sorting
+		'''
+    return sorted(tuples,key=lastitem)
+
+def lastitem(atuple):
+    return atuple[-1]
+
+```
+
+## The funny thing about size-1 tuple
+
+```python 
+t = (1) # t =1 
+t1 = (1,) # t1 = (1,) : a tuple
+t2 = 2,   # t2 = (2,) : a tuple
+```
+
+## List Comprehension
+
+```python
+'''
+Syntax : [ expr for item in list if condition ]
+where expr populates the new list
+list : old list
+if condition is optional
+'''
+l = [1,2,3,4,5]
+l1 = [ i*i for i in l if i < 4 ]
+```
