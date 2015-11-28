@@ -271,6 +271,90 @@ def predict():
     print predicted_values
 
 
+
+def sgd_simple_optimization_mnist(learning_rate=0.13, n_epochs=1000,
+                           dataset='mnist.pkl.gz',
+                           batch_size=600):
+    datasets = load_data(dataset)
+
+    train_set_x, train_set_y = datasets[0]
+    valid_set_x, valid_set_y = datasets[1]
+    test_set_x, test_set_y = datasets[2]
+
+    # compute number of minibatches for training, validation and testing
+    n_train_batches = train_set_x.get_value(borrow=True).shape[0] / batch_size
+    n_valid_batches = valid_set_x.get_value(borrow=True).shape[0] / batch_size
+    n_test_batches = test_set_x.get_value(borrow=True).shape[0] / batch_size
+
+    print '... building the model'
+
+    # allocate symbolic variables for the data
+    index = T.lscalar()  # index to a [mini]batch
+
+    x = T.matrix('x')  # data, presented as rasterized images
+    y = T.ivector('y')  # labels, presented as 1D vector of [int] labels
+
+    classifier = LogisticRegression(input=x, n_in=28 * 28, n_out=10)
+
+    cost = classifier.negative_log_likelihood(y)
+
+    test_model = theano.function(
+        inputs=[index],
+        outputs=classifier.errors(y),
+        givens={
+            x: test_set_x[index * batch_size: (index + 1) * batch_size],
+            y: test_set_y[index * batch_size: (index + 1) * batch_size]
+        }
+    )
+
+    validate_model = theano.function(
+        inputs=[index],
+        outputs=classifier.errors(y),
+        givens={
+            x: valid_set_x[index * batch_size: (index + 1) * batch_size],
+            y: valid_set_y[index * batch_size: (index + 1) * batch_size]
+        }
+    )
+
+    # compute the gradient of cost with respect to theta = (W,b)
+    g_W = T.grad(cost=cost, wrt=classifier.W)
+    g_b = T.grad(cost=cost, wrt=classifier.b)
+
+    updates = [(classifier.W, classifier.W - learning_rate * g_W),
+               (classifier.b, classifier.b - learning_rate * g_b)]
+
+    train_model = theano.function(
+        inputs=[index],
+        outputs=cost,
+        updates=updates,
+        givens={
+            x: train_set_x[index * batch_size: (index + 1) * batch_size],
+            y: train_set_y[index * batch_size: (index + 1) * batch_size]
+        }
+    )
+
+
+    print '... training the model'
+    start_time = timeit.default_timer()
+    
+    for minibatch_index in xrange(n_train_batches):
+        minibatch_avg_cost = train_model(minibatch_index)
+
+    # save the best model
+    with open('best_model.pkl', 'w') as f:
+        cPickle.dump(classifier, f)
+
+    end_time = timeit.default_timer()
+   
+    print >> sys.stderr, ('The code for file ' +
+                          os.path.split(__file__)[1] +
+                          ' ran for %.1fs' % ((end_time - start_time)))
+
+
+
 if __name__ == '__main__':
-    sgd_optimization_mnist()
+    sgd_simple_optimization_mnist()
+
+
+
 
