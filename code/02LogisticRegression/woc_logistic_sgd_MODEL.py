@@ -58,7 +58,7 @@ def load_data(dataset):
     if data_dir == "" and not os.path.isfile(dataset):
         new_path = os.path.join(
             os.path.split(__file__)[0],
-            "..",
+            "../..",
             "data",
             dataset
         )
