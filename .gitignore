@@ -2,3 +2,5 @@
 .*.swp
 .ipynb_checkpoints
 *.pyc
+pickled_dict
+data/mnist.pkl.gz

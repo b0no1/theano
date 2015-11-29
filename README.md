@@ -8,8 +8,8 @@ This repository tracks my progress in learning theano, my notes on theano and im
 
 ## ->current
 - [x] Linear Regression
-- [ ] Logistic Regression
-- [ ] Multilayer Perceptron
+- [x] Logistic Regression
+- [x] Multilayer Perceptron
 - [ ] Convolutional Neural Network
 
 ## Code Reading List
