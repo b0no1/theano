@@ -6,11 +6,14 @@
 
 This repository tracks my progress in learning theano, my notes on theano and implementation of toy examples
 
+*ConvolNet for MNIST data*
+![Layer 1 Feature Maps](https://media.giphy.com/media/xTk9ZZtohJugv8coKY/giphy.gif "Layer 1 Feature Maps")
+
 ## ->current
 - [x] Linear Regression
 - [x] Logistic Regression
 - [x] Multilayer Perceptron
-- [ ] Convolutional Neural Network
+- [x] Convolutional Neural Network
 
 ## Code Reading List
 1. [Theano Tutorial](https://github.com/Newmu/Theano-Tutorials)
@@ -23,3 +26,4 @@ This repository tracks my progress in learning theano, my notes on theano and im
 ## ->next
 
 1. [Theano Related Projects](https://github.com/Theano/Theano/wiki/Related-projects)
+
