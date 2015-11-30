@@ -1,0 +1,1 @@
+THEANO_FLAGS='floatX=float32,exception_verbosity=high,device=gpu0' ipython notebook
