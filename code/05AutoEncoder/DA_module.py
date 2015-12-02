@@ -36,9 +36,13 @@ class DenoisingAutoencoder(object):
             self.bh = theano.shared(value = np.zeros(num_h,dtype=theano.config.floatX),name='bh',borrow=True)
         # setup weight hidden-output layer connections
         #  -> tied weights
+        self.w = w
+        self.bh = bh
         self.w_ = self.w.T
         self.x = input
         self.params = [self.w,self.bv,self.bh]
+        #theano rng
+        self.theano_rng = theano_rng
         
     def encode(self,x_):
         return T.nnet.sigmoid(T.dot(x_,self.w) + self.bh) ### Notice the use of bh here ###
