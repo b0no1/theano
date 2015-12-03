@@ -16,8 +16,10 @@ This repository tracks my progress in learning theano, my notes on theano and im
 - [x] Convolutional Neural Network
 - [x] Autoencoders
 - [ ] Stacked Autoencoder
+- [ ] Recurrent Neural Net
 - [ ] Restricted Boltzmann Machines
 - [ ] Deep Belief Net
+- [ ] LSTM
 - [ ] Neural Turing Machine
 
 ## Code Reading List
@@ -29,6 +31,7 @@ This repository tracks my progress in learning theano, my notes on theano and im
 1. [Deeplearning.net Theano Tutorial](http://deeplearning.net/software/theano/tutorial/)
 2. [Deeplearning.net Documentation](http://deeplearning.net/software/theano/)
 3. [NTM - Shawn Tan](https://blog.wtf.sg/2014/10/27/neural-turing-machines-a-first-look/)
+4. [Recurrent Neural Network @WildML](http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/)
 
 ## ->next
 
