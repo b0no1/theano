@@ -1,0 +1,13 @@
+[global]
+floatX=float32
+device=gpu0
+optimizer = fast_run
+
+[lib]
+cnmem = 0.9
+ 
+[nvcc]
+fastmath = True
+ 
+[blas]
+ldflags = -llapack -lblas

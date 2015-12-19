@@ -3,6 +3,6 @@
 .ipynb_checkpoints
 *.pyc
 pickled_dict
-data/mnist.pkl.gz
-data/tamilch.pkl.gz
+*.pkl.gz
 *.pkl
+*.csv
